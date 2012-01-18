@@ -110,4 +110,14 @@ class multimethodTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals('Shakers', $greatPairs(array('Salt', 'Pepper')));
         $this->assertEquals('Robbers', $greatPairs(array(array('name' => 'Bonnie'), array('name' => 'Clyde'))));
     }
+
+    public function testRecursiveFunctions() {
+        $factorial = multimethod()
+                       ->when(0, 1)
+                       ->when(1, 1)
+                       ->_default(function($n, $factorial) {
+                           return $n * $factorial($n - 1);
+                       });
+        $this->assertEquals(6, $factorial(3));
+    }
 }
