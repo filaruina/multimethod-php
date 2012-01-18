@@ -27,7 +27,7 @@ polymorphic function.
   be returned directly. Calling `when` with the same `match` value twice will 
   override the previously registered `method`.
 - `remove`(match): Remove a `method` by it's `match` value.
-- `default`(fn | value): Catch-all case when no `method` match is found.
+- `_default`(fn | value): Catch-all case when no `method` match is found.
 
 # Examples
 
