@@ -38,7 +38,7 @@ class MultiMethod {
         if ($dispatch) {
             $this->dispatch = $dispatch;
         } else {
-            $this->dispatch = function($a) { return $a; };
+            $this->dispatch(function($a) { return $a; });
         }
 
         $this->defaultFunction = function() { return null; };
@@ -65,6 +65,7 @@ class MultiMethod {
      */
     protected function evaluate($subject, $args) {
         if ($subject instanceof Closure) {
+            $args[] = $this;
             return call_user_func_array($subject, $args);
         }
 
